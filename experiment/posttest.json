@@ -1,39 +1,111 @@
+
 {
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "1. Which of the following sphygmomanometers is visualized in the simulator window of the experiment?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Column sphygmomanometer",
+        "b": "Aneroid sphygmomanometer",
+        "c": "Mercury sphygmomanometer",
+        "d": "Digital sphygmomanometer"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+ 
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },   
+
+
+    {
+      "question": "2. Identify the parts of an aneroid sphygmomanometer",
+      "answers": {
+        "a": "Aneroid Gauge, Inflatable cuff, Inflation Bulb, Oximeter",
+        "b": "Aneroid Gauge, Mercury column, Inflatable cuff, Oximeter",
+        "c": "Aneroid Gauge, Inflatable cuff, Inflation Bulb, Stethoscope",
+        "d": "Aneroid Gauge, Mercury column, Inflatable cuff, Stethoscope"
       },
+      
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+
+    {
+      "question": "3. Which of the following arteries is considered for blood pressure (BP) measurement?",
+      "answers": {
+        "a": "Carotid artery",
+        "b": "Femoral artery",
+        "c": "Pulmonary artery",
+        "d": "Brachial artery"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+
+    {
+      "question": "4. Korotkoff sounds are produced due to the",
+      "answers": {
+        "a": "Turbulent flow of blood through an artery",
+        "b": "Expansion of lungs during breathing.",
+        "c": "Closure of heart valves",
+        "d": "Underlying medical conditions"
+      },
+      
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
+
     {
-      "question": "This is a Sample Question 2?",
+      "question": "5. The first Korotkoff sound is indicative of",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Systolic pressure",
+        "b": "Diastolic pressure",
+        "c": "Normal pressure",
+        "d": "Mean arterial pressure"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+
+    {
+      "question": "6. From the simulator window, identify the clinical conditions caused by lower systolic and diastolic readings.",
+      "answers": {
+        "a": "Hypertension",
+        "b": "Shock",
+        "c": "Prehypertension",
+        "d": "None of the above"
       },
-      "correctAnswer": "c",
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+
+    {
+      "question": "7. Identify the condition representing 145/95 mmHg blood pressure.",
+      "answers": {
+        "a": "Hypotension",
+        "b": "Stage 2 Hypertension",
+        "c": "Hypertensive Crisis",
+        "d": "Shock "
+      },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+
+
+    {
+      "question": "8. If the BP measures 90/60 mmHg, the correlated clinical condition is",
+      "answers": {
+        "a": "Hypotension",
+        "b": "Prehypertension",
+        "c": "Hypertension",
+        "d": "Stage 1 Hypertension"
+      },
+     
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
-}
+}	 
