@@ -1,13 +1,110 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html lang="en">
+
 <head>
-	<!-- Add CSS at the head of HTML file -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Blood Pressure Simulator — Aneroid Sphygmomanometer</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
-		<!-- Your code goes here-->
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+<body class="mobile-instructions-active">
+    <header>
+        <img src="images\logo.png" class="logo" alt="University Logo">
+        <h1>Measurement of Blood Pressure (Sphygmomanometer)</h1>
+    </header>
+    <div class="app">
+
+        <!-- LEFT PANEL -->
+        <div class="column left">
+            <!-- SIMULATOR CONTROLS -->
+            <div id="left-sim">
+                <h3>Instructions</h3>
+                <ol class="instructions-list">
+                    <li>Select a <strong>BP condition</strong> from the dropdown.</li>
+                    <li>Click the <strong>Sphygmomanometer</strong> (cuff) to place it on the patient’s arm.</li>
+                    <li>Click the <strong>Stethoscope</strong> to begin auscultation.</li>
+                    <li>Hold the <strong>PUMP (Inflate)</strong> button to increase pressure above systolic level.</li>
+                    <li>Slowly press the <strong>VALVE (Deflate)</strong> button to reduce pressure gradually.</li>
+                    <li>Observe when the heartbeat starts (systolic pressure detected).</li>
+                    <li>Observe when the heartbeat stops (diastolic pressure detected).</li>
+                    <li>View detected values in the measurement log.</li>
+                </ol>
+
+                <button id="mobile-start-btn" class="control-btn primary">Start Simulation</button>
+            </div>
+        </div>
+
+        <!-- MIDDLE PANEL - VISUALIZATION -->
+        <div class="column middle">
+            <!-- SIMULATOR VIEW (Default) -->
+            <div id="main-sim">
+                <h2>Interactive Simulation</h2>
+                <button id="mobile-back-btn" class="control-btn secondary mobile-only">Back to Instructions</button>
+
+                <div class="sim-container">
+                    <!-- Base Scene Layer (Using .png as per user change) -->
+                    <img src="images\scene_1.png" id="base-scene" alt="Patient Arm">
+
+                    <!-- Instruments (Clickable) -->
+                    <img src="images\cuff_icon.png" id="tool-cuff" class="tool" alt="Cuff" title="Place Cuff">
+                    <img src="images\steth_icon.png" id="tool-steth" class="tool" alt="Stethoscope" title="Place Stethoscope">
+
+                    <!-- Gauge Overlay (Visible after setup) -->
+                    <div id="gauge-container" class="gauge">
+                        <div class="gauge-face">
+                            <!-- Ticks are drawn via CSS/JS or background image would be better, using simple CSS ticks for now -->
+                            <div class="gauge-dial"></div>
+                            <div class="needle" id="gauge-needle"></div>
+                            <div class="gauge-center"></div>
+                            <div class="gauge-value" id="gauge-text">0</div>
+                            <div class="gauge-unit">mmHg</div>
+                        </div>
+                    </div>
+
+                    <!-- Heart (Visible after setup) -->
+                    <div id="heart" class="heart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL - INFO -->
+        <div class="column right">
+            <h3>Diagnostic Info</h3>
+
+            <div class="info-card" id="patient-settings">
+                <h4>Patient Settings</h4>
+                <label for="bp-condition">BP Condition:</label>
+                <select id="bp-condition" class="bp-select">
+                    <option value="normal">Normal (120/80)</option>
+                    <option value="hypotension">Hypotension (85/55)</option>
+                    <option value="prehypertension">Pre-Hypertension (130/85)</option>
+                    <option value="stage1">Hypertension Stage 1 (150/95)</option>
+                    <option value="stage2">Hypertension Stage 2 (170/105)</option>
+                    <option value="crisis">Hypertensive Crisis (200/130)</option>
+                    <option value="isolated">Isolated Systolic Hypertension (170/70)</option>
+                    <option value="shock">Shock (70/40)</option>
+                </select>
+            </div>
+
+            <div id="controls" class="control-panel" style="display:none; margin-top: 15px;">
+                <h4>Manual Controls</h4>
+                <p class="hint">Hold to operate</p>
+
+                <button id="btn-inflate" class="control-btn inflate">PUMP (Inflate)</button>
+                <button id="btn-deflate" class="control-btn deflate" title="Hold to Deflate">VALVE (DEFLATE)</button>
+            </div>
+
+            <div id="results-log" class="info-card" style="display:none; margin-top:15px;">
+                <h4>Measurement Log</h4>
+                <div id="log-content"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
 </body>
+
 </html>
