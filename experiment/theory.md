@@ -22,3 +22,12 @@ Key components of an aneroid sphygmomanometer (Figure 1)
 3.	**Inflation Bulb/Valve:** It pumps air manually into the cuff and releases slowly for accurate measurement. 
 
 4.	**Stethoscope:** – Used to hear Korotkoff sounds.
+
+&nbsp;
+<p align="center">
+  <img src="images/Fig1.png" title="Aneroid Gauge Diagram" />
+  <br />
+  <i>Figure 1. Parts of an aneroid sphygmomanometer</i>
+</p>
+
+&nbsp;
