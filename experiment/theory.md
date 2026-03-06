@@ -23,4 +23,11 @@ Key components of an aneroid sphygmomanometer (Figure 1)
 
 4.	**Stethoscope:** – Used to hear Korotkoff sounds.
 
-<img src="images/Fig1.png" title="" />
+&nbsp;
+<p align="center">
+  <img src="images/Fig1.png" title="Aneroid Gauge Diagram" />
+  <br />
+  <i>Figure 1. Parts of an aneroid sphygmomanometer</i>
+</p>
+
+&nbsp;
