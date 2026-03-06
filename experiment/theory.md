@@ -31,3 +31,34 @@ Key components of an aneroid sphygmomanometer (Figure 1)
 </p>
 
 &nbsp;
+#### Working of Aneroid sphygmomanometer
+Initially, the subject needs to be seated in a comfortable position for an accurate blood pressure measurement. Before the blood pressure measurement, the subject should be well rested for at least 5 minutes. The medical history of the subject can be taken at that time. It is necessary to avoid smoking at least 30 minutes before getting their blood pressure monitored. The subject should be seated with feet flat on the floor, slightly bent arm supported at heart level and seated with back support. The selection of an appropriate cuff size is the next step. The cuff size determination is based on bladder width, which is approximately 40% of the arm circumference, and bladder length will be 80% of the arm circumference. The center of the cuff bladder needs to be placed over the brachial artery. The cuff is wrapped around the arm approximately 2.5cm above the elbow crease. The clothing in the arm covers the location of cuff placement. Neither the subject nor the observer should talk during the rest period or during the measurement. 
+
+&nbsp;
+The aneroid sphygmomanometer works on the mechanical pressure measurement principle. When the rubber bulb is squeezed, the air enters the cuff, the cuff is inflated and compresses the brachial artery. Inflate the cuff to around 180–200 mmHg. This stops the temporary blood flow in the branchial artery. When the cuff is completely inflated, the air pressure acts on the metal diaphragm that is inside the gauge. The diaphragm expands or contracts (deforms) based on the applied pressure. This movement is transferred through a system containing mechanical levers and gears. The needle on the dial moves and shows the pressure in mmHg. When the cuff is deflated slowly by opening the valve, the pressure in the cuff gradually decreases, and the gauge needle moves downward. There will be turbulent blood flow with tapping sounds known as Korotkoff sounds, which can be heard by using a stethoscope placed over the artery. When the first Korotkoff sound is heard, read the needle value and record it as systolic blood pressure. When the sound disappears, note the needle value, which is reported as the diastolic blood pressure. The average readings of 2 readings obtained on minimum occasions can be used to estimate the individual’s BP.
+
+&nbsp;
+There are five phases of Korotkoff sound but only first sound (phase I, a clear, repetitive, tapping, coinciding with reappearance of a palpable pulse) and the sound disappearance (phase V, not really a sound, rather it indicates the disappearance of sounds) are of medical importance in arterial blood pressure measurement. In Phase 2 audible murmurs in the tapping sounds are heard and in Phases 3 and 4 Muted changes in the tapping sounds as the pressure measurement approaches the diastolic pressure. 
+
+&nbsp;
+For accurate measurements, the aneroid device needs to be calibrated periodically to ensure accuracy, as the mechanical components can drift over time. Aneroid sphygmomanometer is portable, durable, and safe for general check-ups.
+
+&nbsp;
+#### Blood pressure categories in medical conditions
+• **Normal blood pressure:** Blood pressure is lower than 120/80 mm Hg.
+
+• **Hypotension:** The force of the blood pushing against the artery walls is too low is called hypotension. The blood pressure is a reading lower than 90/60 mm Hg. The common symptoms include light-headedness, fainting, blurry vision, fatigue, dizziness, cold skin, and nausea. 
+
+• **Prehypertension:** Blood pressure readings can be between 120 and 139 for the systolic measurement and 80 to 89 for the diastolic measurement. This acts as a warning for hypertension, cardiovascular diseases (CVDs), stroke, heart attack and associated complications in the future.
+
+• **Hypertension:** Blood pressure in the arterial wall is highly elevated. The blood reading is between 130/80 mmHg or higher. It is a major cause of premature death, stroke, coronary artery disease, heart disease, hypertensive retinopathy, and chronic kidney disease if left untreated. 
+
+o ***Stage 1 Hypertension:*** The blood pressure readings are between 130/80 and 139/89 mm Hg. This indicates the chances of cardiovascular disease and potential progression to stage 2 and can be managed by lifestyle changes and medications if preferred. 
+
+o ***Stage 2 Hypertension:*** The blood pressure is consistently measured at a level of 140/90 mmHg or above. Increases the risk of stroke, heart attack, heart failure, and kidney damage. 
+
+• **Hypertensive Crisis:** A hypertensive crisis is a sudden spike in blood pressure greater than 180/120 mmHg and requires immediate medical attention. It can damage blood vessels and body organs, including the kidneys, heart, brain, and eyes. 
+
+• **Isolated Systolic Hypertension:** It is a type of high blood pressure, where the systolic blood pressure is in the range of 130mmHg or higher, and the diastolic pressure is lower than 80mmHg. It also increases the chance of heart attack, stroke, and death from cardiovascular disease.
+
+• **Shock:** It is a sudden drop in blood pressure resulting in inadequate blood supply to the vital organs. The systolic readings is lower than 90 mm Hg, and the diastolic reading is below 60 mm Hg.
