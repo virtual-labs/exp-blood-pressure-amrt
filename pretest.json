@@ -1,0 +1,72 @@
+
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. The instrument used to measure blood pressure",
+      "answers": {
+        "a": "Pulse oximeter",
+        "b": "Sphygmomanometer",
+        "c": "Glucometer",
+        "d": "Thermometer"
+      },
+ 
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },   
+
+
+    {
+      "question": "2. The definition of blood pressure is ",
+      "answers": {
+        "a": "The movement of blood inside the veins only",
+        "b": "The amount of oxygen present in the arterial blood",
+        "c": "Force of blood against arterial walls during pumping and relaxation of the heart.",
+        "d": "The number of times the heart beats in one minute"
+      },
+      
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+
+    {
+      "question": "3. The normal blood pressure range in a healthy person is",
+      "answers": {
+        "a": "60–80 mmHg",
+        "b": "100-120 mmHg",
+        "c": "160–200 mmHg",
+        "d": "80-120 mmHg"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+
+    {
+      "question": "4. Which of the following can be used for measuring BP?",
+      "answers": {
+        "a": "Aneroid sphygmomanometer",
+        "b": "Mercury sphygmomanometer",
+        "c": "Digital sphygmomanometer",
+        "d": "All the above"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+
+
+    {
+      "question": "5. The simple physics rule used in a sphygmomanometer is",
+      "answers": {
+        "a": "Pascal’s Law",
+        "b": "Doppler Effect",
+        "c": "Ohm’s Law",
+        "d": "Archimedes’ Principle"
+      },
+     
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}	 
