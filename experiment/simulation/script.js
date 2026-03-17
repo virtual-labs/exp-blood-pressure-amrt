@@ -15,13 +15,10 @@ const CONFIG = {
 
 const CONDITIONS = {
     normal: { systolic: 120, diastolic: 80, pulse: 72, intensity: 1.0, description: "Normal (120/80)" },
-    hypotension: { systolic: 85, diastolic: 55, pulse: 95, intensity: 0.5, description: "Hypotension (85/55)" },
-    prehypertension: { systolic: 130, diastolic: 85, pulse: 72, intensity: 1.0, description: "Pre-Hypertension (130/85)" },
-    stage1: { systolic: 150, diastolic: 95, pulse: 80, intensity: 1.5, description: "Hypertension Stage 1 (150/95)" },
-    stage2: { systolic: 170, diastolic: 105, pulse: 105, intensity: 2.0, description: "Hypertension Stage 2 (170/105)" },
-    crisis: { systolic: 200, diastolic: 130, pulse: 110, intensity: 2.5, description: "Hypertensive Crisis (200/130)" },
-    isolated: { systolic: 170, diastolic: 70, pulse: 80, intensity: 2.0, description: "Isolated Systolic Hypertension (170/70)" },
-    shock: { systolic: 70, diastolic: 40, pulse: 120, intensity: 0.3, description: "Shock (70/40)" }
+    hypotension: { systolic: 90, diastolic: 60, pulse: 90, intensity: 0.8, description: "Hypotension (90/60)" },
+    prehypertension: { systolic: 130, diastolic: 85, pulse: 72, intensity: 1.0, description: "Prehypertension (130/85)" },
+    stage1: { systolic: 140, diastolic: 90, pulse: 80, intensity: 1.3, description: "Stage 1 Hypertension (140/90)" },
+    stage2: { systolic: 160, diastolic: 100, pulse: 90, intensity: 1.6, description: "Stage 2 Hypertension (160/100)" }
 };
 
 /* --- STATE --- */
@@ -58,13 +55,24 @@ const dom = {
     logContent: document.getElementById('log-content'),
     heart: document.getElementById('heart'),
     bpCondition: document.getElementById('bp-condition'),
+    btnSelectCuff: document.getElementById('btn-select-cuff'),
+    btnSelectSteth: document.getElementById('btn-select-steth'),
+    instructionMsg: document.getElementById('instruction-msg'),
+    dynamicInstruction: document.getElementById('dynamic-instruction'),
+    btnBack: document.getElementById('btn-back'),
+    btnReset: document.getElementById('btn-reset'),
+    readingSystolic: document.getElementById('reading-systolic'),
+    readingDiastolic: document.getElementById('reading-diastolic'),
+    btnBackTheory: document.getElementById('btn-back-theory'),
+    btnResetTop: document.getElementById('btn-reset-top'),
+    btnStartExperiment: document.getElementById('btn-start-experiment')
 };
 
 /* --- SCENE ASSETS --- */
 const SCENES = {
-    empty: 'images/scene_1.png',
-    cuff: 'images/scene_2.png',
-    full: 'images/scene_3.png'
+    empty: 'scene_1.png',
+    cuff: 'scene_2.png',
+    full: 'scene_3.png'
 };
 
 /* --- AUDIO CONTEXT --- */
@@ -152,18 +160,26 @@ function checkHeartbeat(now) {
             // Needle twitch effect (visual feedback)
             twitchNeedle();
 
-            // Logging Logic
-            if (!state.soundsHeard.systolic && Math.abs(p - CONFIG.systolic) <= 5) {
+            // Systolic Detection (First sound)
+            if (!state.soundsHeard.systolic) {
                 state.soundsHeard.systolic = true;
-                logEvent(`Systolic detected ~${Math.round(p)} mmHg`);
+                const systolicVal = Math.round(p);
+                logEvent(`Systolic detected: ${systolicVal} mmHg`);
+                if (dom.readingSystolic) {
+                    dom.readingSystolic.innerText = systolicVal;
+                }
             }
         }
 
-        // End Detection
+        // Diastolic Detection (End Detection)
         // Immediately stop logging after the pressure falls beneath the diastolic value exactly once.
         if (state.soundsHeard.systolic && !state.soundsHeard.diastolic && p < CONFIG.diastolic) {
             state.soundsHeard.diastolic = true;
-            logEvent(`Diastolic detected ~${CONFIG.diastolic} mmHg`);
+            const diastolicVal = Math.round(CONFIG.diastolic);
+            logEvent(`Diastolic detected: ${diastolicVal} mmHg`);
+            if (dom.readingDiastolic) {
+                dom.readingDiastolic.innerText = diastolicVal;
+            }
             const condDesc = CONDITIONS[dom.bpCondition.value].description;
             logEvent(`Selected condition: ${condDesc}`);
             logEvent("Measurement Complete.");
@@ -253,8 +269,45 @@ function setupInteractions() {
         applyCondition(e.target.value);
     });
 
+    // Function to update the dynamic banner
+    function updateInstructionBanner(msg) {
+        if (dom.dynamicInstruction) {
+            dom.dynamicInstruction.innerText = msg;
+        }
+    }
+
     // Initialize with default selected condition
+    // NOTE: In the new flow, we don't apply automatically on load if we want the user to pick first.
+    // However, the existing code calls it. Let's keep it but ensure button is disabled as per HTML.
     applyCondition(dom.bpCondition.value);
+
+    // Initially disable tool clicks
+    dom.tools.cuff.style.pointerEvents = 'none';
+    dom.tools.steth.style.pointerEvents = 'none';
+
+    if (dom.btnSelectCuff) {
+        dom.btnSelectCuff.onclick = () => {
+            if (dom.instructionMsg) {
+                dom.instructionMsg.innerText = "Click on the cuff to place it on the patient's arm.";
+                dom.instructionMsg.style.display = "block";
+            }
+            updateInstructionBanner("Click on the cuff to place it on the arm.");
+            dom.tools.cuff.style.pointerEvents = "auto";
+            dom.tools.cuff.classList.add("highlight-tool");
+        };
+    }
+
+    if (dom.btnSelectSteth) {
+        dom.btnSelectSteth.onclick = () => {
+            if (dom.instructionMsg) {
+                dom.instructionMsg.innerText = "Click on the stethoscope to position it for auscultation.";
+                dom.instructionMsg.style.display = "block";
+            }
+            updateInstructionBanner("Click on the stethoscope to position it for auscultation.");
+            dom.tools.steth.style.pointerEvents = "auto";
+            dom.tools.steth.classList.add("highlight-tool");
+        };
+    }
 
     // Tool: Cuff
     dom.tools.cuff.onclick = (e) => {
@@ -262,6 +315,17 @@ function setupInteractions() {
         if (state.step === 0) {
             state.step = 1;
             dom.tools.cuff.style.display = 'none'; // applied
+            dom.tools.cuff.classList.remove('highlight-tool');
+            if (dom.instructionMsg) dom.instructionMsg.style.display = 'none';
+
+            // Disable BP condition dropdown
+            dom.bpCondition.disabled = true;
+
+            // Show select stethoscope button
+            if (dom.btnSelectSteth) dom.btnSelectSteth.style.display = 'block';
+            if (dom.btnSelectCuff) dom.btnSelectCuff.style.display = 'none';
+            updateInstructionBanner("Now select the stethoscope.");
+
             dom.scene.src = SCENES.cuff;
         }
     };
@@ -272,6 +336,12 @@ function setupInteractions() {
         if (state.step === 1) {
             state.step = 2;
             dom.tools.steth.style.display = 'none'; // applied
+            dom.tools.steth.classList.remove('highlight-tool');
+            if (dom.instructionMsg) dom.instructionMsg.style.display = 'none';
+            if (dom.btnSelectSteth) dom.btnSelectSteth.style.display = 'none';
+
+            updateInstructionBanner("Setup complete. You may now start the measurement using the manual controls.");
+
             dom.scene.src = SCENES.full;
 
             // Show Simulator UI
@@ -323,6 +393,95 @@ function setupInteractions() {
     dom.btnDeflate.addEventListener('mouseleave', stopDeflate);
     dom.btnDeflate.addEventListener('touchstart', startDeflate);
     dom.btnDeflate.addEventListener('touchend', stopDeflate);
+
+
+    if (dom.btnBack) {
+        dom.btnBack.addEventListener('click', () => {
+            window.location.href = 'theory.html';
+        });
+    }
+
+    if (dom.btnBackTheory) {
+        dom.btnBackTheory.addEventListener('click', () => {
+            window.location.href = 'theory.html';
+        });
+    }
+
+    const triggerReset = () => {
+        // Reset state
+        state.step = 0;
+        state.pressure = 0;
+        state.isInflating = false;
+        state.isDeflating = false;
+        state.soundsHeard.systolic = false;
+        state.soundsHeard.diastolic = false;
+
+        if (pumpInterval) {
+            clearInterval(pumpInterval);
+            pumpInterval = null;
+        }
+
+        // Reset BP condition dropdown
+        dom.bpCondition.disabled = false;
+        dom.bpCondition.value = "normal";
+        applyCondition("normal"); // this also resets some basic states & logs
+
+        // Reset UI readings
+        if (dom.readingSystolic) dom.readingSystolic.innerText = "---";
+        if (dom.readingDiastolic) dom.readingDiastolic.innerText = "---";
+
+        // Reset tools UI
+        dom.tools.cuff.style.display = 'block';
+        dom.tools.cuff.classList.remove('highlight-tool');
+        dom.tools.cuff.style.pointerEvents = 'none';
+
+        dom.tools.steth.style.display = 'block';
+        dom.tools.steth.classList.remove('highlight-tool');
+        dom.tools.steth.style.pointerEvents = 'none';
+
+        if (dom.btnSelectCuff) {
+            dom.btnSelectCuff.style.display = 'none';
+            dom.btnSelectCuff.disabled = false;
+        }
+        if (dom.btnSelectSteth) dom.btnSelectSteth.style.display = 'none';
+        if (dom.btnStartExperiment) dom.btnStartExperiment.style.display = 'block';
+        if (dom.instructionMsg) dom.instructionMsg.style.display = 'none';
+
+        // Reset Scene
+        dom.scene.src = SCENES.empty;
+
+        // Hide Simulator Controls
+        dom.gauge.container.style.display = 'none';
+        dom.controls.style.display = 'none';
+
+        // Reset UI Instructions
+        updateInstructionBanner("Select a BP condition to begin the experiment.");
+
+        // Reset gauge visuals
+        updateUI();
+    };
+
+    // Reset Button
+    if (dom.btnReset) {
+        dom.btnReset.addEventListener('click', triggerReset);
+    }
+    if (dom.btnResetTop) {
+        dom.btnResetTop.addEventListener('click', triggerReset);
+    }
+
+    // Start Experiment button
+    if (dom.btnStartExperiment) {
+        dom.btnStartExperiment.addEventListener('click', () => {
+            if (dom.btnSelectCuff) {
+                dom.btnSelectCuff.style.display = 'block';
+            }
+            if (dom.btnStartExperiment) {
+                dom.btnStartExperiment.style.display = 'none';
+            }
+            updateInstructionBanner("Click Select Cuff to place the sphygmomanometer cuff on the patient’s arm.");
+        });
+    }
+
     // Mobile Flow Toggle
     const mobileStartBtn = document.getElementById('mobile-start-btn');
     const mobileBackBtn = document.getElementById('mobile-back-btn');
