@@ -70,9 +70,9 @@ const dom = {
 
 /* --- SCENE ASSETS --- */
 const SCENES = {
-    empty: 'scene_1.png',
-    cuff: 'scene_2.png',
-    full: 'scene_3.png'
+    empty: 'images\scene_1.png',
+    cuff: 'images\scene_2.png',
+    full: 'images\scene_3.png'
 };
 
 /* --- AUDIO CONTEXT --- */
