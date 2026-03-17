@@ -397,13 +397,13 @@ function setupInteractions() {
 
     if (dom.btnBack) {
         dom.btnBack.addEventListener('click', () => {
-            window.location.href = 'theory.html';
+            window.location.href = './index.html';
         });
     }
 
     if (dom.btnBackTheory) {
         dom.btnBackTheory.addEventListener('click', () => {
-            window.location.href = 'theory.html';
+            window.location.href = './index.html';
         });
     }
 
